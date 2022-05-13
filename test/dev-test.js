@@ -17,6 +17,9 @@ const bc2 = new Blockchain()
 bc2.addBlock("seed")
 const isValid = bc.isValidChain(bc2.chain)
 
+bc.addBlock("you")
+bc.replaceChain(bc2.chain)
+
 console.log(isValid)
 
 

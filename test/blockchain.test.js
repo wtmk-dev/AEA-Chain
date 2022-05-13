@@ -60,4 +60,18 @@ describe('Blockchain', ()=>{
         bc.replaceChain(bc2.chain)
         expect(bc.chain).not.toEqual(bc2.chain)
     })
+
+    it('replaces the chain with a valid chain', ()=>{
+        bc2.addBlock('hey')
+        bc.replaceChain(bc2.chain)
+
+        expect(bc.chain).toEqual(bc2.chain)
+    })
+
+    it('it dos not replace with smaller chain', ()=>{
+        bc.addBlock("you")
+        bc.replaceChain(bc2.chain)
+
+        expect(bc.chain).not.toEqual(bc2.chain)
+    })
 })
