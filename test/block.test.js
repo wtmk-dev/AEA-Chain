@@ -1,5 +1,4 @@
 const Block = require("../class/block")
-const { DIFFICULTY } = require('../config')
 
 describe('Block', ()=>
 {
@@ -21,7 +20,18 @@ describe('Block', ()=>
         expect(block.lastHash).toEqual(lastBlock.hash)
     })
 
-    it('gens a hash that mathces the difficulty', ()=>{
-        expect(block.hash.substring(0, DIFFICULTY)).toEqual('0'.repeat(DIFFICULTY))
+    it('gens a hash that mathces the difficulty', ()=>
+    {
+        expect(block.hash.substring(0, block.difficulty)).toEqual('0'.repeat(block.difficulty))
+    })
+
+    it('lowers the difficulty for slowly mined blocks', () => 
+    {
+        expect(Block.adjustDifficulty(block, block.timeStamp+360000).toEqual(block.difficulty-1))
+    })
+
+    it('raises the difficulty for quicly mined blocks', () => 
+    {
+        expect(Block.adjustDifficulty(block, block.timeStamp+1).toEqual(block.difficulty+1))
     })
 });
