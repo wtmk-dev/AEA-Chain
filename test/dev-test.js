@@ -24,11 +24,17 @@ bc.replaceChain(bc2.chain)
 console.log(isValid)
 */
 
+/*
 const bc = new Blockchain()
 
 for(let i = 0; i < 10; i++)
 {
     console.log(bc.addBlock(`one day at a time ${i}`).toString())
 }
+*/
 
+const Wallet = require('../wallet')
+const wallet = new Wallet()
+
+console.log(wallet.toString())
 
