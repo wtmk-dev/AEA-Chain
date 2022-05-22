@@ -19,6 +19,11 @@ class ChainUtil
     {
         return SHA256(JSON.stringify(data)).toString()
     }
+
+    static varifySignature(publicKey, signature, dataHash)
+    {
+        return ec.keyFromPublic(publicKey, 'hex').verify(dataHash, signature)
+    }
 }
 
 module.exports = ChainUtil
