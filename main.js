@@ -53,13 +53,13 @@ app.get('/publicKey', (req, res)=>{
 p2pServer.listen()
 
 
-/*
-const tp = new TransactionPool()
-const wallet = new Wallet()
-const recipient = 'loloa'
-const value = 20
-const transaction = wallet.createTransaction(recipient, value, tp)
-wallet.createTransaction(recipient,value, tp)
 
-console.log(transaction)
+/*
+    const tp = new TransactionPool()
+    const wallet = new Wallet()
+    const recipient = 'loloa'
+    const value = 20
+    const transaction = wallet.createTransaction(recipient, value, tp)
+    wallet.createTransaction(recipient,value, tp)
+    console.log(transaction)
 */
