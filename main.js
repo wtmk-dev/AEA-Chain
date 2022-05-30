@@ -38,7 +38,7 @@ app.get('/mine-transactions', (req, res) =>
 app.post('/transact', (req,res)=>
 {
     const{ recipient, amount } = req.body
-    const transaction = wallet.createTransaction(recipient, amount, tp)
+    const transaction = wallet.createTransaction(recipient, amount, bc, tp)
     p2pServer.broadcastTransaction(transaction)
     res.redirect('/transactions')
 })
@@ -61,12 +61,3 @@ app.get('/publicKey', (req, res)=>{
 
 p2pServer.listen()
 
-/*
-    const tp = new TransactionPool()
-    const wallet = new Wallet()
-    const recipient = 'loloa'
-    const value = 20
-    const transaction = wallet.createTransaction(recipient, value, tp)
-    wallet.createTransaction(recipient,value, tp)
-    console.log(transaction)
-*/

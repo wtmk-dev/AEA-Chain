@@ -1,14 +1,16 @@
 const TransactionPool = require('./transaction-pool')
 const Transaction = require('./transaction')
 const Wallet = require('./index')
+const Blockchain = require('../class/blockchain')
 
 describe('TransactionPool', ()=>{
-    let tp, wallet, transaction
+    let tp, wallet, transaction, blockchain
     
     beforeEach(()=>{
         tp = new TransactionPool()
         wallet = new Wallet()
-        transaction = wallet.createTransaction('llolorr', 30, tp)
+        blockchain = new Blockchain()
+        transaction = wallet.createTransaction('llolorr', 30, blockchain, tp)
     })
 
     it('adds a transaction to the pool', ()=>{
@@ -39,7 +41,7 @@ describe('TransactionPool', ()=>{
             for(let i=0; i<6; i++)
             {
                 wallet = new Wallet()
-                transaction = wallet.createTransaction('llolorr', 30, tp)
+                transaction = wallet.createTransaction('llolorr', 30, blockchain, tp)
 
                 if(i%2==0)
                 {

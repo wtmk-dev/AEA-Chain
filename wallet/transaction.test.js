@@ -1,14 +1,16 @@
 const Transaction = require('./transaction')
 const Wallet = require('./index');
 const { MINING_REWARD } = require('../config');
+const Blockchain = require('../class/blockchain');
 
 describe('Transaction', ()=>{
-    let transaction, wallet, recipient, amount;
+    let transaction, wallet, recipient, amount, blockchain;
 
     beforeEach(()=>{
         wallet = new Wallet()
         amount = 6
         recipient = "Junko"
+        blockchain = new Blockchain()
         transaction = Transaction.newTransaction(wallet, recipient, amount)
     })
 
